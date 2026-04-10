@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#ff4f8d" />
+  <title>Happy Birthday Sehrish</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#ffd1e1;
+      --bg1:#ff77a7;
+      --bg2:#ff4f8d;
+      --ink:#2a0f1d;
+      --cream:#fff6fb;
+      --glass: rgba(255,255,255,.26);
+      --stroke: rgba(255,255,255,.42);
+      --shadow: 0 22px 60px rgba(42,15,29,.18);
+      --shadow2: 0 10px 30px rgba(42,15,29,.14);
+      --radius: 28px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 18% 10%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%),
+        radial-gradient(900px 700px at 80% 30%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
+        linear-gradient(135deg, var(--bg0), var(--bg1) 45%, var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* Soft texture */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 12% 22%, rgba(255,255,255,.18) 0 2px, transparent 3px) 0 0/44px 44px,
+        radial-gradient(circle at 72% 62%, rgba(42,15,29,.06) 0 1px, transparent 2px) 0 0/58px 58px;
+      mix-blend-mode:soft-light;
+      opacity:.65;
+    }
+
+    main{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding: clamp(18px, 4vw, 48px);
+      position:relative;
+      isolation:isolate;
+    }
+
+    /* Background balloons layer */
+    .balloons{
+      position:fixed;
+      inset:-40px -20px -40px -20px;
+      z-index:-2;
+      pointer-events:none;
+      filter: drop-shadow(0 18px 30px rgba(42,15,29,.12));
+      opacity:.95;
+    }
+
+    .frame{
+      width:min(980px, 100%);
+      border-radius: calc(var(--radius) + 10px);
+      background: linear-gradient(180deg, rgba(255,255,255,.40), rgba(255,255,255,.22));
+      border:1px solid rgba(255,255,255,.52);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* Decorative ribbon */
+    .ribbon{
+      position:absolute;
+      inset: 0;
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    header{
+      padding: clamp(22px, 4vw, 40px) clamp(18px, 4vw, 44px) 0;
+    }
+
+    .topline{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.40);
+      border:1px solid rgba(255,255,255,.55);
+      box-shadow: var(--shadow2);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .badge svg{width:18px;height:18px}
+    .badge span{opacity:.95}
+
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    button{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      font-family:inherit;
+      border-radius: 999px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.38);
+      border: 1px solid rgba(255,255,255,.6);
+      color: var(--ink);
+      font-weight: 700;
+      letter-spacing:.2px;
+      box-shadow: var(--shadow2);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    button:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.52);
+      box-shadow: 0 18px 36px rgba(42,15,29,.14);
+    }
+    button:active{transform: translateY(0px) scale(.99)}
+    button:focus-visible{
+      outline: 3px solid rgba(255,255,255,.72);
+      outline-offset: 3px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: clamp(16px, 3.2vw, 34px);
+      padding: clamp(20px, 4vw, 44px);
+      align-items:start;
+    }
+
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr}
+      .actions{width:100%; justify-content:flex-start}
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-family:"Fraunces", serif;
+      font-size: clamp(40px, 5.2vw, 72px);
+      line-height: .98;
+      letter-spacing: -0.6px;
+      text-wrap: balance;
+    }
+
+    .name{
+      display:inline-block;
+      position:relative;
+      padding: 0 .10em;
+    }
+    .name::after{
+      content:"";
+      position:absolute;
+      left:-.05em;
+      right:-.05em;
+      bottom:.08em;
+      height:.38em;
+      background: linear-gradient(90deg, rgba(255,255,255,.0), rgba(255,255,255,.55), rgba(255,255,255,.0));
+      border-radius: 999px;
+      z-index:-1;
+      transform: skewX(-10deg);
+      opacity:.9;
+    }
+
+    .sub{
+      margin:0;
+      font-size: clamp(15px, 1.55vw, 18px);
+      line-height: 1.75;
+      opacity:.95;
+      max-width: 56ch;
+    }
+
+    .poem{
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.30);
+      border:1px solid rgba(255,255,255,.52);
+      box-shadow: 0 12px 30px rgba(42,15,29,.10);
+    }
+
+    .poem h2{
+      margin:0 0 8px;
+      font-family:"Fraunces", serif;
+      font-size: clamp(18px, 2.0vw, 22px);
+      letter-spacing: -.2px;
+    }
+    .poem p{
+      margin:0;
+      line-height:1.85;
+      font-size: clamp(14px, 1.5vw, 16px);
+      opacity:.95;
+    }
+    .poem p + p{margin-top:10px}
+
+    .side{
+      position:relative;
+      padding: 18px;
+      border-radius: calc(var(--radius) - 6px);
+      background: rgba(255,255,255,.22);
+      border:1px solid rgba(255,255,255,.48);
+      box-shadow: 0 18px 40px rgba(42,15,29,.10);
+      overflow:hidden;
+      min-height: 320px;
+    }
+
+    .side:before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:
+        radial-gradient(220px 220px at 20% 18%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%),
+        radial-gradient(260px 240px at 80% 30%, rgba(255,255,255,.35), rgba(255,255,255,0) 65%),
+        radial-gradient(300px 260px at 40% 86%, rgba(255,79,141,.24), rgba(255,79,141,0) 70%);
+      transform: rotate(-6deg);
+      opacity:.85;
+    }
+
+    .cakeWrap{
+      position:relative;
+      display:grid;
+      place-items:center;
+      height:100%;
+      z-index:1;
+      padding: 10px 0 2px;
+    }
+
+    .caption{
+      margin-top: 14px;
+      text-align:center;
+      font-weight:700;
+      letter-spacing:.25px;
+      opacity:.9;
+    }
+
+    .footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      padding: 0 clamp(18px, 4vw, 44px) clamp(18px, 4vw, 34px);
+      opacity:.95;
+    }
+
+    .hint{
+      font-size: 13px;
+      opacity:.9;
+    }
+
+    /* Reveal animations */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      animation: rise .8s ease forwards;
+    }
+    .d1{animation-delay:.08s}
+    .d2{animation-delay:.18s}
+    .d3{animation-delay:.28s}
+    .d4{animation-delay:.38s}
+    .d5{animation-delay:.48s}
+
+    @keyframes rise{
+      to{opacity:1; transform: translateY(0)}
+    }
+
+    /* Confetti (generated by JS) */
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:50;
+      overflow:hidden;
+    }
+    .confetti i{
+      position:absolute;
+      width:10px;
+      height:16px;
+      border-radius: 3px;
+      transform: translateY(-20vh) rotate(0deg);
+      animation: fall var(--t) linear forwards;
+      opacity:.95;
+      box-shadow: 0 10px 20px rgba(42,15,29,.08);
+    }
+    @keyframes fall{
+      to{
+        transform: translateY(120vh) rotate(540deg);
+        opacity: .98;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .reveal{animation:none; opacity:1; transform:none}
+      .confetti i{animation:none}
+      button{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Balloons (inline SVG) -->
+  <svg class="balloons" viewBox="0 0 1200 800" aria-hidden="true">
+    <defs>
+      <linearGradient id="b1" x1="0" x2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".72"/>
+        <stop offset=".5" stop-color="#ffd1e1" stop-opacity=".25"/>
+        <stop offset="1" stop-color="#ff4f8d" stop-opacity=".30"/>
+      </linearGradient>
+      <linearGradient id="b2" x1="0" x2="1">
+        <stop offset="0" stop-color="#fff6fb" stop-opacity=".70"/>
+        <stop offset="1" stop-color="#ff77a7" stop-opacity=".26"/>
+      </linearGradient>
+      <linearGradient id="b3" x1="0" x2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".60"/>
+        <stop offset="1" stop-color="#ff4f8d" stop-opacity=".22"/>
+      </linearGradient>
+
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="0.6" />
+      </filter>
+    </defs>
+
+    <!-- Left cluster -->
+    <g opacity=".9" filter="url(#soft)">
+      <g transform="translate(120 110)">
+        <ellipse cx="0" cy="0" rx="78" ry="96" fill="url(#b1)"/>
+        <path d="M0 96 C -10 110, -10 122, 0 132 C 10 122, 10 110, 0 96Z" fill="rgba(255,255,255,.55)"/>
+        <path d="M0 132 C -4 170, -18 216, -18 260" stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none"/>
+      </g>
+      <g transform="translate(230 155)">
+        <ellipse cx="0" cy="0" rx="62" ry="78" fill="url(#b2)"/>
+        <path d="M0 78 C -8 92, -8 104, 0 112 C 8 104, 8 92, 0 78Z" fill="rgba(255,255,255,.5)"/>
+        <path d="M0 112 C 6 160, 22 218, 22 276" stroke="rgba(255,255,255,.5)" stroke-width="2" fill="none"/>
+      </g>
+      <g transform="translate(90 250)">
+        <ellipse cx="0" cy="0" rx="54" ry="68" fill="url(#b3)"/>
+        <path d="M0 68 C -7 80, -7 90, 0 98 C 7 90, 7 80, 0 68Z" fill="rgba(255,255,255,.46)"/>
+        <path d="M0 98 C -8 146, -26 208, -26 286" stroke="rgba(255,255,255,.46)" stroke-width="2" fill="none"/>
+      </g>
+    </g>
+
+    <!-- Right cluster -->
+    <g opacity=".9" filter="url(#soft)">
+      <g transform="translate(1020 140)">
+        <ellipse cx="0" cy="0" rx="74" ry="92" fill="url(#b2)"/>
+        <path d="M0 92 C -10 106, -10 118, 0 128 C 10 118, 10 106, 0 92Z" fill="rgba(255,255,255,.52)"/>
+        <path d="M0 128 C -10 170, -34 228, -34 290" stroke="rgba(255,255,255,.52)" stroke-width="2" fill="none"/>
+      </g>
+      <g transform="translate(910 210)">
+        <ellipse cx="0" cy="0" rx="60" ry="76" fill="url(#b1)"/>
+        <path d="M0 76 C -8 90, -8 102, 0 110 C 8 102, 8 90, 0 76Z" fill="rgba(255,255,255,.48)"/>
+        <path d="M0 110 C 12 164, 32 218, 32 282" stroke="rgba(255,255,255,.48)" stroke-width="2" fill="none"/>
+      </g>
+      <g transform="translate(1100 290)">
+        <ellipse cx="0" cy="0" rx="52" ry="66" fill="url(#b3)"/>
+        <path d="M0 66 C -7 78, -7 88, 0 96 C 7 88, 7 78, 0 66Z" fill="rgba(255,255,255,.44)"/>
+        <path d="M0 96 C -2 150, -10 214, -10 300" stroke="rgba(255,255,255,.44)" stroke-width="2" fill="none"/>
+      </g>
+    </g>
+
+    <!-- Floating small balloons -->
+    <g opacity=".55">
+      <g transform="translate(510 95)">
+        <ellipse cx="0" cy="0" rx="28" ry="36" fill="rgba(255,255,255,.35)"/>
+        <path d="M0 36 C -4 44, -4 50, 0 54 C 4 50, 4 44, 0 36Z" fill="rgba(255,255,255,.30)"/>
+      </g>
+      <g transform="translate(690 110)">
+        <ellipse cx="0" cy="0" rx="22" ry="30" fill="rgba(255,255,255,.28)"/>
+        <path d="M0 30 C -3 38, -3 43, 0 46 C 3 43, 3 38, 0 30Z" fill="rgba(255,255,255,.25)"/>
+      </g>
+    </g>
+  </svg>
+
+  <main>
+    <section class="frame" aria-label="Birthday card for Sehrish">
+      <svg class="ribbon" viewBox="0 0 1200 520" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-20,130 C180,40 320,70 520,30 C740,-15 910,30 1220,10 L1220,0 L-20,0 Z"
+              fill="rgba(255,255,255,.22)"/>
+        <path d="M-20,520 L-20,470 C160,520 330,460 520,500 C710,540 930,470 1220,520 Z"
+              fill="rgba(255,255,255,.16)"/>
+      </svg>
+
+      <header>
+        <div class="topline">
+          <div class="badge reveal d1" role="note" aria-label="Birthday greeting">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 14c-1.5 0-3 1.2-3 3v2h16v-2c0-1.8-1.5-3-3-3" stroke="rgba(42,15,29,.75)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M7 14h10" stroke="rgba(42,15,29,.75)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M8 14V9.6c0-1.8 1.7-3.4 4-3.4s4 1.6 4 3.4V14" stroke="rgba(42,15,29,.75)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M10 6.5c.2-1.2 1-2.5 2-3" stroke="rgba(255,79,141,.9)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M14 6.5c-.2-1.2-1-2.5-2-3" stroke="rgba(255,79,141,.9)" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span>Birthday Special</span>
+          </div>
+
+          <div class="actions reveal d2">
+            <button id="confettiBtn" type="button" aria-label="Confetti chalayen">Confetti</button>
+            <button id="copyBtn" type="button" aria-label="Wishes copy karein">Copy Wishes</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div>
+          <h1 class="reveal d2">
+            Happy Birthday<br>
+            <span class="name">Sehrish</span>
+          </h1>
+
+          <p class="sub reveal d3">
+            Aaj ka din sirf tumhara hai — tumhari muskurahat, tumhari khushi, aur tumhari har nayi shuruat ke naam.
+          </p>
+
+          <div class="poem reveal d4" aria-label="Birthday wishes">
+            <h2>Khubsurat si dua aur chand lafz</h2>
+            <p>
+              Aaj ka din tumhara hai — aaj ke din tum is duniya mein aayi,<br>
+              aur saath hi khushiyon ki roshni bhi le aayi.
+            </p>
+            <p>
+              Dua hai ke tumhari zindagi mehnat se zyada asaan ho,<br>
+              aur tumhare sapne tumhari soch se bhi zyada bada maan ho.
+            </p>
+            <p>
+              Har saal tumhari hansi aur bhi pyari lage,<br>
+              Sehrish — tumhari har subah “best day” wali tayyari lage.
+            </p>
+          </div>
+        </div>
+
+        <aside class="side reveal d5" aria-label="Decorative cake illustration">
+          <div class="cakeWrap">
+            <!-- Inline SVG Cake -->
+            <svg width="320" height="260" viewBox="0 0 320 260" role="img" aria-label="Birthday cake illustration">
+              <defs>
+                <linearGradient id="cg" x1="0" x2="1">
+                  <stop offset="0" stop-color="rgba(255,255,255,.75)"/>
+                  <stop offset="1" stop-color="rgba(255,119,167,.25)"/>
+                </linearGradient>
+                <linearGradient id="icing" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#fff6fb" stop-opacity=".95"/>
+                  <stop offset="1" stop-color="#ffd1e1" stop-opacity=".92"/>
+                </linearGradient>
+                <linearGradient id="cake" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#ff77a7" stop-opacity=".85"/>
+                  <stop offset="1" stop-color="#ff4f8d" stop-opacity=".55"/>
+                </linearGradient>
+                <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="rgba(42,15,29,.18)"/>
+                </filter>
+              </defs>
+
+              <!-- Plate -->
+              <ellipse cx="160" cy="226" rx="118" ry="18" fill="rgba(255,255,255,.55)" />
+              <ellipse cx="160" cy="228" rx="92" ry="10" fill="rgba(255,255,255,.35)" />
+
+              <!-- Cake body -->
+              <g filter="url(#ds)">
+                <rect x="78" y="106" width="164" height="108" rx="26" fill="url(#cake)" stroke="rgba(255,255,255,.55)" />
+                <rect x="68" y="86" width="184" height="46" rx="22" fill="url(#icing)" stroke="rgba(255,255,255,.6)" />
+                <!-- Drips -->
+                <path d="M78 108
+                         C 92 116, 106 116, 120 108
+                         C 132 118, 146 118, 158 108
+                         C 170 120, 184 120, 196 108
+                         C 210 116, 226 116, 242 108
+                         L 242 122
+                         C 232 130, 224 142, 216 136
+                         C 206 128, 200 156, 186 140
+                         C 174 128, 166 160, 150 142
+                         C 136 126, 128 150, 114 136
+                         C 100 124, 96 146, 86 134
+                         C 80 126, 78 124, 78 122 Z"
+                      fill="rgba(255,246,251,.9)" opacity=".92"/>
+              </g>
+
+              <!-- Candle -->
+              <g>
+                <rect x="154" y="50" width="12" height="46" rx="6" fill="url(#cg)" stroke="rgba(255,255,255,.65)"/>
+                <path d="M160 34
+                         C 151 46, 158 56, 160 60
+                         C 162 56, 169 46, 160 34 Z"
+                      fill="rgba(255,209,225,.95)" stroke="rgba(255,255,255,.6)"/>
+                <path d="M160 38
+                         C 155 46, 158 52, 160 55
+                         C 162 52, 165 46, 160 38 Z"
+                      fill="rgba(255,79,141,.65)"/>
+              </g>
+
+              <!-- Sprinkles -->
+              <g opacity=".85">
+                <circle cx="104" cy="108" r="3" fill="rgba(255,79,141,.7)"/>
+                <circle cx="132" cy="98" r="3" fill="rgba(42,15,29,.22)"/>
+                <circle cx="206" cy="100" r="3" fill="rgba(255,79,141,.55)"/>
+                <circle cx="224" cy="110" r="3" fill="rgba(42,15,29,.20)"/>
+                <circle cx="152" cy="112" r="3" fill="rgba(255,79,141,.62)"/>
+              </g>
+            </svg>
+
+            <div class="caption">Tumhari khushi = sab se pyari</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="footer">
+        <div class="hint reveal d4">
+          Tip: “Confetti” dabao aur Sehrish ko surprise do.
+        </div>
+        <div class="hint reveal d5" aria-label="Signature">
+          Made with love — for <strong>Sehrish</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script>
+    const confettiRoot = document.getElementById('confetti');
+    const confettiBtn = document.getElementById('confettiBtn');
+    const copyBtn = document.getElementById('copyBtn');
+
+    function popConfetti(count = 120){
+      // Clear old pieces
+      confettiRoot.innerHTML = '';
+
+      const colors = [
+        'rgba(255,255,255,.92)',
+        'rgba(255,209,225,.95)',
+        'rgba(255,119,167,.95)',
+        'rgba(255,79,141,.92)',
+        'rgba(42,15,29,.18)'
+      ];
+
+      const w = window.innerWidth;
+      for(let i=0;i<count;i++){
+        const piece = document.createElement('i');
+        const left = Math.random() * w;
+        const delay = Math.random() * 0.25;
+        const dur = 1.9 + Math.random() * 1.7;
+        const sizeW = 6 + Math.random() * 8;
+        const sizeH = 10 + Math.random() * 14;
+
+        piece.style.left = left + 'px';
+        piece.style.top = (-20 - Math.random()*140) + 'px';
+        piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+        piece.style.width = sizeW + 'px';
+        piece.style.height = sizeH + 'px';
+        piece.style.setProperty('--t', dur + 's');
+        piece.style.animationDelay = delay + 's';
+        piece.style.transform = `translateY(-20vh) rotate(${Math.random()*180}deg)`;
+
+        confettiRoot.appendChild(piece);
+      }
+
+      // Cleanup after animation
+      setTimeout(() => {
+        confettiRoot.innerHTML = '';
+      }, 4200);
+    }
+
+    confettiBtn.addEventListener('click', () => popConfetti(140));
+
+    const wishesText =
+`Happy Birthday Sehrish!
+
+Aaj ka din tumhara hai — aaj ke din tum is duniya mein aayi,
+aur saath hi khushiyon ki roshni bhi le aayi.
+
+Dua hai ke tumhari zindagi mehnat se zyada asaan ho,
+aur tumhare sapne tumhari soch se bhi zyada bada maan ho.
+
+Har saal tumhari hansi aur bhi pyari lage,
+Sehrish — tumhari har subah “best day” wali tayyari lage.`;
+
+    copyBtn.addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText(wishesText);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy Wishes', 1200);
+      }catch(e){
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = wishesText;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy Wishes', 1200);
+      }
+    });
+
+    // Auto confetti on load (subtle)
+    window.addEventListener('load', () => {
+      setTimeout(() => popConfetti(90), 550);
+    });
+  </script>
+</body>
+</html>
